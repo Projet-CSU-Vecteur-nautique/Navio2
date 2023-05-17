@@ -2,7 +2,7 @@
 
 *Ce répertoire sert de documentation pour le Navio2. Il relatera des diffrents tests effectués avec l'autopilote.*
 
-## Installation
+## Installation du Navio2
 
 ### Montage du Navio2
 
@@ -42,16 +42,34 @@ Pour monter le Navio2 sur le RPi, suivre le tutoriel fourni par emlid disponible
         ```
 
     - Redémarrer le RPi `reboot`.
-  
+
 4. Mettre à jour le système
 
     ```sh
     sudo apt-get update && sudo apt-get dist-upgrade
     ```
 
-## Tests
+## Installation de QGC
 
-Pour tester le lidar, Slamtec met a disposition un package ROS et les instructions associées pour tester le lidar: [lien](https://github.com/Slamtec/rplidar_ros/tree/master).
+Sur le PC GCS suivre les instructions suivantes: [installation qgc](https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html) ou passer par un conteneur (ex: [Docker](https://docs.docker.com/get-docker/)).
+
+### Installation par docker
+
+1. Créer le conteneur en pensant à activer
+
+Bien penser à activer l'exécution d'application graphique en créant le conteneur:
+
+```sh
+sudo docker run -it \
+    --privileged \
+    --name=QGC \
+    --env="DISPLAY" \
+    --env="QT_X11_NO_MITSHM=1" \
+    --env="LIBGL_ALWAYS_SOFTWARE=1" \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+    ubuntu:20.04 \
+    bash
+```
 
 ### Compiler la librairie
 
