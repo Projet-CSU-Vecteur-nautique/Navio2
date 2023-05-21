@@ -55,9 +55,26 @@ Sur le PC GCS suivre les instructions suivantes: [installation qgc](https://docs
 
 ### Installation par docker
 
-1. Créer le conteneur en pensant à activer
+*Pour éviter d'installer trop d'applications en local ou se protéger lors de tests, il peut être intéressant de passer par des conteneurs.*
 
-Bien penser à activer l'exécution d'application graphique en créant le conteneur:
+1. Construire l'image à partir du [Dockerfile](/Dockerfile).
+
+    ```sh
+    # Depuis le répertoire du fichier Dockerfile
+    sudo docker build -t qgc .
+    ```
+
+    *Cette étape peut durer quelques minutes*
+
+2. Créer le conteneur QGC
+
+Pour autoriser l'execution d'application graphique depuis le conteneur, executer la commande
+
+```sh
+xhost +local:root
+```
+
+Pour créer le conteneur
 
 ```sh
 sudo docker run -it \
@@ -67,8 +84,16 @@ sudo docker run -it \
     --env="QT_X11_NO_MITSHM=1" \
     --env="LIBGL_ALWAYS_SOFTWARE=1" \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-    ubuntu:20.04 \
-    bash
+    -u qgc \
+    qgc \
+    ./QGroundControl.AppImage
+```
+
+Pour démarrer le conteneur et accéder à l'application depuis un conteneur en actif
+
+```sh
+sudo docker start QGC # Démarrage
+sudo docker exec -it -u qgc bash # Executer un conteneur en cours
 ```
 
 ### Compiler la librairie
