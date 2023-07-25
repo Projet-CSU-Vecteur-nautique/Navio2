@@ -63,7 +63,9 @@ Pour monter le Navio2 sur le RPi, suivre le tutoriel fourni par emlid disponible
 
 ## Installation de QGC
 
-## Connecter le receveur X8R à la télécommande TX16S
+Pour installer QGC, suivre ce [tutoriel](https://github.com/Projet-CSU-Vecteur-nautique/QGroundControl).
+
+## Associer le receveur X8R à la télécommande TX16S
 
 Regarder cette [video](https://www.youtube.com/watch?v=1IYg5mQdLVI) pour la manipulation à suivre.
 
@@ -72,5 +74,3 @@ Par la suite, calibrer la télécommande sur QGC.
 ### Sortir la TX16S du mode secours
 
 Si la télécommande reste bloquée dans un mode secours, cette [video](https://youtu.be/uIkk95Mpimo) pourrait aider à corriger le problème.
-
-## Liens
